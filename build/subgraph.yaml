@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Degenbox
@@ -17,15 +17,15 @@ dataSources:
         - LogStrategyProfit
       abis:
         - name: USTCauldron
-          file: ./abis/USTCauldron.json
+          file: Degenbox\abis\USTCauldron.json
         - name: Degenbox
-          file: ./abis/Degenbox.json
+          file: Degenbox\abis\Degenbox.json
         - name: ERC20
-          file: ./abis/ERC20.json
+          file: Degenbox\abis\ERC20.json
       eventHandlers:
         - event: LogStrategyProfit(indexed address,uint256)
           handler: handleLogStrategyProfit
-      file: ./src/Degenbox/DegenboxHandlers.ts
+      file: Degenbox\Degenbox.wasm
   - kind: ethereum
     name: Bentobox
     network: mainnet
@@ -41,16 +41,16 @@ dataSources:
         - LogStrategyProfit
       abis:
         - name: Bentobox
-          file: ./abis/Bentobox.json
+          file: Bentobox\abis\Bentobox.json
         - name: ERC20
-          file: ./abis/ERC20.json
+          file: Bentobox\abis\ERC20.json
         - name: Abracvxtricrypto2
-          file: ./abis/Abracvxtricrypto2.json
+          file: Bentobox\abis\Abracvxtricrypto2.json
         - name: CurvePoolOracle
-          file: ./abis/CurvePoolOracle.json
+          file: Bentobox\abis\CurvePoolOracle.json
         - name: ConvexStakingWrapperAbra
-          file: ./abis/ConvexStakingWrapperAbra.json
+          file: Bentobox\abis\ConvexStakingWrapperAbra.json
       eventHandlers:
         - event: LogStrategyProfit(indexed address,uint256)
           handler: handleLogStrategyProfit
-      file: ./src/Bentobox/BentoboxHandlers.ts
+      file: Bentobox\Bentobox.wasm

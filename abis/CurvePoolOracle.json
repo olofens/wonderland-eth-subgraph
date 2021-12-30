@@ -1,0 +1,11 @@
+[{
+    "stateMutability": "view",
+    "type": "function",
+    "name": "lp_price",
+    "inputs": [],
+    "outputs": [{
+        "name": "",
+        "type": "uint256"
+    }],
+    "gas": 1054528
+}]
