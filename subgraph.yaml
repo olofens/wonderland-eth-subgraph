@@ -3,42 +3,18 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Degenbox
+    name: sOHM
     network: mainnet
     source:
-      address: "0xd96f48665a1410C0cd669A88898ecA36B9Fc2cce"
-      abi: Degenbox
-      startBlock: 13709174
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - LogStrategyProfit
-      abis:
-        - name: USTCauldron
-          file: ./abis/USTCauldron.json
-        - name: Degenbox
-          file: ./abis/Degenbox.json
-        - name: ERC20
-          file: ./abis/ERC20.json
-      eventHandlers:
-        - event: LogStrategyProfit(indexed address,uint256)
-          handler: handleLogStrategyProfit
-      file: ./src/Degenbox/DegenboxHandlers.ts
-  - kind: ethereum
-    name: Bentobox
-    network: mainnet
-    source:
-      address: "0xF5BCE5077908a1b7370B9ae04AdC565EBd643966"
-      abi: Bentobox
+      address: "0x04F2694C8fcee23e8Fd0dfEA1d4f5Bb8c352111F"
+      abi: sOHM
       startBlock: 13297740
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - LogStrategyProfit
+        - LogRebase
       abis:
         - name: Bentobox
           file: ./abis/Bentobox.json
@@ -50,7 +26,13 @@ dataSources:
           file: ./abis/CurvePoolOracle.json
         - name: ConvexStakingWrapperAbra
           file: ./abis/ConvexStakingWrapperAbra.json
+        - name: USTCauldron
+          file: ./abis/USTCauldron.json
+        - name: Degenbox
+          file: ./abis/Degenbox.json
+        - name: sOHM
+          file: ./abis/sOHM.json
       eventHandlers:
-        - event: LogStrategyProfit(indexed address,uint256)
-          handler: handleLogStrategyProfit
-      file: ./src/Bentobox/BentoboxHandlers.ts
+        - event: LogRebase(indexed uint256,uint256,uint256)
+          handler: handleLogRebase
+      file: ./src/handlers.ts

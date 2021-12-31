@@ -1,12 +1,14 @@
 import { USTDegenboxMetric } from "./../../generated/schema";
 import { BigDecimal, BigInt } from "@graphprotocol/graph-ts";
 
-export function loadOrCreateUSTDegenboxMetric(timestamp: BigInt): USTDegenboxMetric {
-  let timestampStr = timestamp.toString();
-  let ustDegenboxMetric = USTDegenboxMetric.load(timestampStr);
+export function loadOrCreateUSTDegenboxMetric(
+  dateStr: string,
+  timestamp: BigInt
+): USTDegenboxMetric {
+  let ustDegenboxMetric = USTDegenboxMetric.load(dateStr);
 
   if (ustDegenboxMetric == null) {
-    ustDegenboxMetric = new USTDegenboxMetric(timestampStr);
+    ustDegenboxMetric = new USTDegenboxMetric(dateStr);
     ustDegenboxMetric.timestamp = timestamp;
     ustDegenboxMetric.debt = BigDecimal.fromString("0");
     ustDegenboxMetric.collateral = BigDecimal.fromString("0");

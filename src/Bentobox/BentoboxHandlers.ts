@@ -1,14 +1,12 @@
 import { CVXCRVTRICRYPTO2_CAULDRON, WONDERLAND_ETH_TREASURY } from "./../constants";
 import { Abracvxtricrypto2 } from "./../../generated/Bentobox/Abracvxtricrypto2";
-import { LogStrategyProfit } from "../../generated/Bentobox/Bentobox";
 import { loadOrCreateCvxcrvtricrypto2BentoboxMetric } from "./Cvxcrvtricrypto2BentoboxMetric";
 import { Address, BigInt, log } from "@graphprotocol/graph-ts";
 import { getCvxCrvTriCryptoSharePrice } from "../utils/cvxcrv3crypto";
 import { toDecimal } from "../Decimals";
 
-export function handleLogStrategyProfit(event: LogStrategyProfit): void {
-  let timestamp = event.block.timestamp;
-  let tricrypto2Metric = loadOrCreateCvxcrvtricrypto2BentoboxMetric(timestamp);
+export function logTricrypto2CauldronMetric(dateStr: string, timestamp: BigInt): void {
+  let tricrypto2Metric = loadOrCreateCvxcrvtricrypto2BentoboxMetric(dateStr, timestamp);
 
   const cauldron = Abracvxtricrypto2.bind(Address.fromString(CVXCRVTRICRYPTO2_CAULDRON));
   const decimals = 18;
@@ -18,7 +16,7 @@ export function handleLogStrategyProfit(event: LogStrategyProfit): void {
   const collateralPrice = getCvxCrvTriCryptoSharePrice();
   const collateral = collateralCoins.times(collateralPrice);
 
-  log.debug("crv3crypto coins: {}, crv3crypto price: {}, collateral usd value: {}, date: {}", [
+  log.debug("crv3crypto coins: {}, crv3crypto price: {}, collateral usd value: {}", [
     collateralCoins.toString(),
     collateralPrice.toString(),
     collateral.toString()

@@ -3,54 +3,36 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum
-    name: Degenbox
+    name: sOHM
     network: mainnet
     source:
-      address: "0xd96f48665a1410C0cd669A88898ecA36B9Fc2cce"
-      abi: Degenbox
-      startBlock: 13709174
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - LogStrategyProfit
-      abis:
-        - name: USTCauldron
-          file: Degenbox\abis\USTCauldron.json
-        - name: Degenbox
-          file: Degenbox\abis\Degenbox.json
-        - name: ERC20
-          file: Degenbox\abis\ERC20.json
-      eventHandlers:
-        - event: LogStrategyProfit(indexed address,uint256)
-          handler: handleLogStrategyProfit
-      file: Degenbox\Degenbox.wasm
-  - kind: ethereum
-    name: Bentobox
-    network: mainnet
-    source:
-      address: "0xF5BCE5077908a1b7370B9ae04AdC565EBd643966"
-      abi: Bentobox
+      address: "0x04F2694C8fcee23e8Fd0dfEA1d4f5Bb8c352111F"
+      abi: sOHM
       startBlock: 13297740
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - LogStrategyProfit
+        - LogRebase
       abis:
         - name: Bentobox
-          file: Bentobox\abis\Bentobox.json
+          file: sOHM\abis\Bentobox.json
         - name: ERC20
-          file: Bentobox\abis\ERC20.json
+          file: sOHM\abis\ERC20.json
         - name: Abracvxtricrypto2
-          file: Bentobox\abis\Abracvxtricrypto2.json
+          file: sOHM\abis\Abracvxtricrypto2.json
         - name: CurvePoolOracle
-          file: Bentobox\abis\CurvePoolOracle.json
+          file: sOHM\abis\CurvePoolOracle.json
         - name: ConvexStakingWrapperAbra
-          file: Bentobox\abis\ConvexStakingWrapperAbra.json
+          file: sOHM\abis\ConvexStakingWrapperAbra.json
+        - name: USTCauldron
+          file: sOHM\abis\USTCauldron.json
+        - name: Degenbox
+          file: sOHM\abis\Degenbox.json
+        - name: sOHM
+          file: sOHM\abis\sOHM.json
       eventHandlers:
-        - event: LogStrategyProfit(indexed address,uint256)
-          handler: handleLogStrategyProfit
-      file: Bentobox\Bentobox.wasm
+        - event: LogRebase(indexed uint256,uint256,uint256)
+          handler: handleLogRebase
+      file: sOHM\sOHM.wasm

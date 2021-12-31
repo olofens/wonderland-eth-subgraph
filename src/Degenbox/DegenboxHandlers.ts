@@ -1,18 +1,16 @@
 import { ERC20 } from "../../generated/Degenbox/ERC20";
 import { CAULDRON_V2_ADDRESS, WONDERLAND_ETH_TREASURY } from "../constants";
 import { USTCauldron } from "../../generated/Degenbox/USTCauldron";
-import { LogStrategyProfit, LogStrategyLoss, Degenbox } from "../../generated/Degenbox/Degenbox";
+import { Degenbox } from "../../generated/Degenbox/Degenbox";
 
-import { Address, BigDecimal, BigInt, log } from "@graphprotocol/graph-ts";
+import { Address, BigInt } from "@graphprotocol/graph-ts";
 import { loadOrCreateUSTDegenboxMetric } from "./USTDegenboxMetric";
-import { pow, toDecimal } from "../Decimals";
+import { toDecimal } from "../Decimals";
 
-export function handleLogStrategyProfit(event: LogStrategyProfit): void {
-  let timestamp = event.block.timestamp;
-  let ustMetric = loadOrCreateUSTDegenboxMetric(timestamp);
+export function logUstMetric(dateStr: string, timestamp: BigInt): void {
+  let ustMetric = loadOrCreateUSTDegenboxMetric(dateStr, timestamp);
 
   // each cauldron has a bentobox (degenbox) attached to it.
-
   const cauldronContract = USTCauldron.bind(Address.fromString(CAULDRON_V2_ADDRESS));
   const degenboxContract = Degenbox.bind(cauldronContract.bentoBox());
   const collateralAddress = cauldronContract.collateral(); // this is address to UST
