@@ -14,6 +14,9 @@ export function loadOrCreateUSTDegenboxMetric(
     ustDegenboxMetric.collateral = BigDecimal.fromString("0");
 
     ustDegenboxMetric.save();
+  } else {
+    ustDegenboxMetric.timestamp = timestamp;
+    ustDegenboxMetric.save();
   }
 
   return ustDegenboxMetric;
