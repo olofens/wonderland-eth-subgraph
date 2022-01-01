@@ -145,3 +145,122 @@ export class Cvxcrvtricrypto2BentoboxMetric extends Entity {
     this.set("debt", Value.fromBigDecimal(value));
   }
 }
+
+export class PopsicleWBTCWETHMetric extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("WBTCCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WETHCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WBTCPrice", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WETHPrice", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WBTCValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WETHValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("combinedValue", Value.fromBigDecimal(BigDecimal.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save PopsicleWBTCWETHMetric entity without an ID"
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save PopsicleWBTCWETHMetric entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("PopsicleWBTCWETHMetric", id.toString(), this);
+    }
+  }
+
+  static load(id: string): PopsicleWBTCWETHMetric | null {
+    return changetype<PopsicleWBTCWETHMetric | null>(
+      store.get("PopsicleWBTCWETHMetric", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get WBTCCount(): BigDecimal {
+    let value = this.get("WBTCCount");
+    return value!.toBigDecimal();
+  }
+
+  set WBTCCount(value: BigDecimal) {
+    this.set("WBTCCount", Value.fromBigDecimal(value));
+  }
+
+  get WETHCount(): BigDecimal {
+    let value = this.get("WETHCount");
+    return value!.toBigDecimal();
+  }
+
+  set WETHCount(value: BigDecimal) {
+    this.set("WETHCount", Value.fromBigDecimal(value));
+  }
+
+  get WBTCPrice(): BigDecimal {
+    let value = this.get("WBTCPrice");
+    return value!.toBigDecimal();
+  }
+
+  set WBTCPrice(value: BigDecimal) {
+    this.set("WBTCPrice", Value.fromBigDecimal(value));
+  }
+
+  get WETHPrice(): BigDecimal {
+    let value = this.get("WETHPrice");
+    return value!.toBigDecimal();
+  }
+
+  set WETHPrice(value: BigDecimal) {
+    this.set("WETHPrice", Value.fromBigDecimal(value));
+  }
+
+  get WBTCValue(): BigDecimal {
+    let value = this.get("WBTCValue");
+    return value!.toBigDecimal();
+  }
+
+  set WBTCValue(value: BigDecimal) {
+    this.set("WBTCValue", Value.fromBigDecimal(value));
+  }
+
+  get WETHValue(): BigDecimal {
+    let value = this.get("WETHValue");
+    return value!.toBigDecimal();
+  }
+
+  set WETHValue(value: BigDecimal) {
+    this.set("WETHValue", Value.fromBigDecimal(value));
+  }
+
+  get combinedValue(): BigDecimal {
+    let value = this.get("combinedValue");
+    return value!.toBigDecimal();
+  }
+
+  set combinedValue(value: BigDecimal) {
+    this.set("combinedValue", Value.fromBigDecimal(value));
+  }
+}

@@ -3,6 +3,7 @@ import { CAULDRON_V2_STARTBLOCK } from "./constants";
 import { LogRebase } from "./../generated/sOHM/sOHM";
 import { logTricrypto2CauldronMetric } from "./Bentobox/BentoboxHandlers";
 import { logUstMetric } from "./Degenbox/DegenboxHandlers";
+import { logPopsicleWBTCWETHMetric } from "./Fragola/WBTCWETHFragolaHandler";
 export function handleLogRebase(event: LogRebase): void {
   let timestamp = event.block.timestamp;
 
@@ -14,4 +15,5 @@ export function handleLogRebase(event: LogRebase): void {
   }
 
   logTricrypto2CauldronMetric(date, timestamp);
+  logPopsicleWBTCWETHMetric(date, timestamp, event.block.number);
 }

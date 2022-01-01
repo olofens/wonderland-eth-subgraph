@@ -11,3 +11,15 @@ type Cvxcrvtricrypto2BentoboxMetric @entity {
   collateral: BigDecimal!
   debt: BigDecimal!
 }
+
+type PopsicleWBTCWETHMetric @entity {
+  id: ID!
+  timestamp: BigInt!
+  WBTCCount: BigDecimal!
+  WETHCount: BigDecimal!
+  WBTCPrice: BigDecimal!
+  WETHPrice: BigDecimal!
+  WBTCValue: BigDecimal!
+  WETHValue: BigDecimal!
+  combinedValue: BigDecimal!
+}
