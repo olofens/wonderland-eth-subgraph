@@ -26,6 +26,7 @@ export const logPopsicleWBTCWETHMetric = (date: string, timestamp: BigInt, block
   const popsicleOptimizer = PopsicleV3Optimizer.bind(
     Address.fromString(POPSICLEFRAGOLA_WBTCWETH_3_PERCENT)
   );
+
   const wonderlandBalance = popsicleOptimizer.balanceOf(
     Address.fromString(WONDERLAND_ETH_TREASURY)
   );

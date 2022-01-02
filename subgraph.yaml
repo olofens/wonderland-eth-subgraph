@@ -36,6 +36,10 @@ dataSources:
           file: ./abis/PopsicleV3Optimizer.json
         - name: UniswapV2Pair
           file: ./abis/UniswapV2Pair.json
+        - name: UniswapV3Pool
+          file: ./abis/UniswapV3Pool.json
+        - name: Univ3NFTManager
+          file: ./abis/Univ3NFTManager.json
       eventHandlers:
         - event: LogRebase(indexed uint256,uint256,uint256)
           handler: handleLogRebase

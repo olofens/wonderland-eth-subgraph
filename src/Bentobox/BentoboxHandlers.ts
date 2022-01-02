@@ -16,12 +16,6 @@ export function logTricrypto2CauldronMetric(dateStr: string, timestamp: BigInt):
   const collateralPrice = getCvxCrvTriCryptoSharePrice();
   const collateral = collateralCoins.times(collateralPrice);
 
-  log.debug("crv3crypto coins: {}, crv3crypto price: {}, collateral usd value: {}", [
-    collateralCoins.toString(),
-    collateralPrice.toString(),
-    collateral.toString()
-  ]);
-
   const totalBorrow = cauldron.totalBorrow();
   const elastic = totalBorrow.value0;
   const base = totalBorrow.value1;
@@ -35,6 +29,8 @@ export function logTricrypto2CauldronMetric(dateStr: string, timestamp: BigInt):
 
   tricrypto2Metric.collateral = collateral;
   tricrypto2Metric.debt = readableDebt;
+  tricrypto2Metric.price = collateralPrice;
+  tricrypto2Metric.coins = collateralCoins;
 
   tricrypto2Metric.save();
 }

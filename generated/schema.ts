@@ -85,6 +85,8 @@ export class Cvxcrvtricrypto2BentoboxMetric extends Entity {
     this.set("timestamp", Value.fromBigInt(BigInt.zero()));
     this.set("collateral", Value.fromBigDecimal(BigDecimal.zero()));
     this.set("debt", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("price", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("coins", Value.fromBigDecimal(BigDecimal.zero()));
   }
 
   save(): void {
@@ -143,6 +145,24 @@ export class Cvxcrvtricrypto2BentoboxMetric extends Entity {
 
   set debt(value: BigDecimal) {
     this.set("debt", Value.fromBigDecimal(value));
+  }
+
+  get price(): BigDecimal {
+    let value = this.get("price");
+    return value!.toBigDecimal();
+  }
+
+  set price(value: BigDecimal) {
+    this.set("price", Value.fromBigDecimal(value));
+  }
+
+  get coins(): BigDecimal {
+    let value = this.get("coins");
+    return value!.toBigDecimal();
+  }
+
+  set coins(value: BigDecimal) {
+    this.set("coins", Value.fromBigDecimal(value));
   }
 }
 
@@ -262,5 +282,197 @@ export class PopsicleWBTCWETHMetric extends Entity {
 
   set combinedValue(value: BigDecimal) {
     this.set("combinedValue", Value.fromBigDecimal(value));
+  }
+}
+
+export class StakedSpellMetric extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("SPELLPrice", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("SPELLSSPELLRatio", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("SSPELLPrice", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("SSPELLCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("SSPELLValue", Value.fromBigDecimal(BigDecimal.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save StakedSpellMetric entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save StakedSpellMetric entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("StakedSpellMetric", id.toString(), this);
+    }
+  }
+
+  static load(id: string): StakedSpellMetric | null {
+    return changetype<StakedSpellMetric | null>(
+      store.get("StakedSpellMetric", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get SPELLPrice(): BigDecimal {
+    let value = this.get("SPELLPrice");
+    return value!.toBigDecimal();
+  }
+
+  set SPELLPrice(value: BigDecimal) {
+    this.set("SPELLPrice", Value.fromBigDecimal(value));
+  }
+
+  get SPELLSSPELLRatio(): BigDecimal {
+    let value = this.get("SPELLSSPELLRatio");
+    return value!.toBigDecimal();
+  }
+
+  set SPELLSSPELLRatio(value: BigDecimal) {
+    this.set("SPELLSSPELLRatio", Value.fromBigDecimal(value));
+  }
+
+  get SSPELLPrice(): BigDecimal {
+    let value = this.get("SSPELLPrice");
+    return value!.toBigDecimal();
+  }
+
+  set SSPELLPrice(value: BigDecimal) {
+    this.set("SSPELLPrice", Value.fromBigDecimal(value));
+  }
+
+  get SSPELLCount(): BigDecimal {
+    let value = this.get("SSPELLCount");
+    return value!.toBigDecimal();
+  }
+
+  set SSPELLCount(value: BigDecimal) {
+    this.set("SSPELLCount", Value.fromBigDecimal(value));
+  }
+
+  get SSPELLValue(): BigDecimal {
+    let value = this.get("SSPELLValue");
+    return value!.toBigDecimal();
+  }
+
+  set SSPELLValue(value: BigDecimal) {
+    this.set("SSPELLValue", Value.fromBigDecimal(value));
+  }
+}
+
+export class Univ3MIMWETHMetric extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("MIMCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WETHCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("MIMValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WETHValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("totalValue", Value.fromBigDecimal(BigDecimal.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save Univ3MIMWETHMetric entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save Univ3MIMWETHMetric entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("Univ3MIMWETHMetric", id.toString(), this);
+    }
+  }
+
+  static load(id: string): Univ3MIMWETHMetric | null {
+    return changetype<Univ3MIMWETHMetric | null>(
+      store.get("Univ3MIMWETHMetric", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get MIMCount(): BigDecimal {
+    let value = this.get("MIMCount");
+    return value!.toBigDecimal();
+  }
+
+  set MIMCount(value: BigDecimal) {
+    this.set("MIMCount", Value.fromBigDecimal(value));
+  }
+
+  get WETHCount(): BigDecimal {
+    let value = this.get("WETHCount");
+    return value!.toBigDecimal();
+  }
+
+  set WETHCount(value: BigDecimal) {
+    this.set("WETHCount", Value.fromBigDecimal(value));
+  }
+
+  get MIMValue(): BigDecimal {
+    let value = this.get("MIMValue");
+    return value!.toBigDecimal();
+  }
+
+  set MIMValue(value: BigDecimal) {
+    this.set("MIMValue", Value.fromBigDecimal(value));
+  }
+
+  get WETHValue(): BigDecimal {
+    let value = this.get("WETHValue");
+    return value!.toBigDecimal();
+  }
+
+  set WETHValue(value: BigDecimal) {
+    this.set("WETHValue", Value.fromBigDecimal(value));
+  }
+
+  get totalValue(): BigDecimal {
+    let value = this.get("totalValue");
+    return value!.toBigDecimal();
+  }
+
+  set totalValue(value: BigDecimal) {
+    this.set("totalValue", Value.fromBigDecimal(value));
   }
 }

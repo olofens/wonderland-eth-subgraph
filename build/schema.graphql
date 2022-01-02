@@ -10,6 +10,8 @@ type Cvxcrvtricrypto2BentoboxMetric @entity {
   timestamp: BigInt!
   collateral: BigDecimal!
   debt: BigDecimal!
+  price: BigDecimal!
+  coins: BigDecimal!
 }
 
 type PopsicleWBTCWETHMetric @entity {
@@ -22,4 +24,14 @@ type PopsicleWBTCWETHMetric @entity {
   WBTCValue: BigDecimal!
   WETHValue: BigDecimal!
   combinedValue: BigDecimal!
+}
+
+type StakedSpellMetric @entity {
+  id: ID!
+  timestamp: BigInt!
+  SPELLPrice: BigDecimal!
+  SPELLSSPELLRatio: BigDecimal!
+  SSPELLPrice: BigDecimal!
+  SSPELLCount: BigDecimal!
+  SSPELLValue: BigDecimal!
 }

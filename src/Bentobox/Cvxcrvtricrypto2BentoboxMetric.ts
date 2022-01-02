@@ -12,6 +12,8 @@ export function loadOrCreateCvxcrvtricrypto2BentoboxMetric(
     myMetric.timestamp = timestamp;
     myMetric.debt = BigDecimal.fromString("0");
     myMetric.collateral = BigDecimal.fromString("0");
+    myMetric.price = BigDecimal.fromString("0");
+    myMetric.coins = BigDecimal.fromString("0");
 
     myMetric.save();
   } else {
