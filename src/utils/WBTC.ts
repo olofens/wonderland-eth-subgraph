@@ -1,6 +1,6 @@
 import { getDAIDecimals } from "./DAI";
 import { UniswapV2Pair } from "./../../generated/sOHM/UniswapV2Pair";
-import { UNI_V2_WBTC_DAI_PAIR, WBTC } from "./../constants";
+import { UNI_V2_WBTC_DAI_PAIR, WBTC, WONDERLAND_ETH_TREASURY } from "./../constants";
 import { ERC20 } from "./../../generated/Bentobox/ERC20";
 import { Address, BigDecimal } from "@graphprotocol/graph-ts";
 import { toDecimal } from "../Decimals";
@@ -26,4 +26,16 @@ export const getWBTCPrice = (): BigDecimal => {
 
   const wbtcRate = totDai.div(totWbtc);
   return wbtcRate;
+};
+
+export const getTreasuryWBTCBalance = (): BigDecimal => {
+  const balance = ERC20.bind(Address.fromString(WBTC)).balanceOf(
+    Address.fromString(WONDERLAND_ETH_TREASURY)
+  );
+
+  return toDecimal(balance, getWBTCDecimals());
+};
+
+export const getTreasuryWBTCValue = (): BigDecimal => {
+  return getTreasuryWBTCBalance().times(getWBTCPrice());
 };

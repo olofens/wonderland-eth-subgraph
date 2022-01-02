@@ -476,3 +476,149 @@ export class Univ3MIMWETHMetric extends Entity {
     this.set("totalValue", Value.fromBigDecimal(value));
   }
 }
+
+export class TokenBalancesMetric extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+
+    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("MIMCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("MIMValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("CVXCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("CVXValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WBTCCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("WBTCValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("CRVCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("CRVValue", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("ETHCount", Value.fromBigDecimal(BigDecimal.zero()));
+    this.set("ETHValue", Value.fromBigDecimal(BigDecimal.zero()));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save TokenBalancesMetric entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        "Cannot save TokenBalancesMetric entity with non-string ID. " +
+          'Considering using .toHex() to convert the "id" to a string.'
+      );
+      store.set("TokenBalancesMetric", id.toString(), this);
+    }
+  }
+
+  static load(id: string): TokenBalancesMetric | null {
+    return changetype<TokenBalancesMetric | null>(
+      store.get("TokenBalancesMetric", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get MIMCount(): BigDecimal {
+    let value = this.get("MIMCount");
+    return value!.toBigDecimal();
+  }
+
+  set MIMCount(value: BigDecimal) {
+    this.set("MIMCount", Value.fromBigDecimal(value));
+  }
+
+  get MIMValue(): BigDecimal {
+    let value = this.get("MIMValue");
+    return value!.toBigDecimal();
+  }
+
+  set MIMValue(value: BigDecimal) {
+    this.set("MIMValue", Value.fromBigDecimal(value));
+  }
+
+  get CVXCount(): BigDecimal {
+    let value = this.get("CVXCount");
+    return value!.toBigDecimal();
+  }
+
+  set CVXCount(value: BigDecimal) {
+    this.set("CVXCount", Value.fromBigDecimal(value));
+  }
+
+  get CVXValue(): BigDecimal {
+    let value = this.get("CVXValue");
+    return value!.toBigDecimal();
+  }
+
+  set CVXValue(value: BigDecimal) {
+    this.set("CVXValue", Value.fromBigDecimal(value));
+  }
+
+  get WBTCCount(): BigDecimal {
+    let value = this.get("WBTCCount");
+    return value!.toBigDecimal();
+  }
+
+  set WBTCCount(value: BigDecimal) {
+    this.set("WBTCCount", Value.fromBigDecimal(value));
+  }
+
+  get WBTCValue(): BigDecimal {
+    let value = this.get("WBTCValue");
+    return value!.toBigDecimal();
+  }
+
+  set WBTCValue(value: BigDecimal) {
+    this.set("WBTCValue", Value.fromBigDecimal(value));
+  }
+
+  get CRVCount(): BigDecimal {
+    let value = this.get("CRVCount");
+    return value!.toBigDecimal();
+  }
+
+  set CRVCount(value: BigDecimal) {
+    this.set("CRVCount", Value.fromBigDecimal(value));
+  }
+
+  get CRVValue(): BigDecimal {
+    let value = this.get("CRVValue");
+    return value!.toBigDecimal();
+  }
+
+  set CRVValue(value: BigDecimal) {
+    this.set("CRVValue", Value.fromBigDecimal(value));
+  }
+
+  get ETHCount(): BigDecimal {
+    let value = this.get("ETHCount");
+    return value!.toBigDecimal();
+  }
+
+  set ETHCount(value: BigDecimal) {
+    this.set("ETHCount", Value.fromBigDecimal(value));
+  }
+
+  get ETHValue(): BigDecimal {
+    let value = this.get("ETHValue");
+    return value!.toBigDecimal();
+  }
+
+  set ETHValue(value: BigDecimal) {
+    this.set("ETHValue", Value.fromBigDecimal(value));
+  }
+}

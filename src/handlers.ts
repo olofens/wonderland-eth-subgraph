@@ -1,3 +1,4 @@
+import { logTokenBalancesMetric } from "./Balances/TokenBalancesHandler";
 import { BigInt } from "@graphprotocol/graph-ts";
 import { CAULDRON_V2_STARTBLOCK } from "./constants";
 import { LogRebase } from "./../generated/sOHM/sOHM";
@@ -18,4 +19,5 @@ export function handleLogRebase(event: LogRebase): void {
   logTricrypto2CauldronMetric(date, timestamp);
   logPopsicleWBTCWETHMetric(date, timestamp, event.block.number);
   logStakedSpellMetric(date, timestamp);
+  logTokenBalancesMetric(date, timestamp);
 }

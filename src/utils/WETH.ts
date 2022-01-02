@@ -1,6 +1,6 @@
 import { getUSDCDecimals } from "./USDC";
 import { UniswapV2Pair } from "./../../generated/sOHM/UniswapV2Pair";
-import { UNI_V2_USDC_WETH_PAIR, WETH } from "./../constants";
+import { UNI_V2_USDC_WETH_PAIR, WETH, WONDERLAND_ETH_TREASURY } from "./../constants";
 import { ERC20 } from "./../../generated/Bentobox/ERC20";
 import { Address, BigDecimal } from "@graphprotocol/graph-ts";
 import { toDecimal } from "../Decimals";
@@ -26,4 +26,16 @@ export const getWETHPrice = (): BigDecimal => {
 
   const wethRate = totUsdc.div(totWeth);
   return wethRate;
+};
+
+export const getTreasuryWETHBalance = (): BigDecimal => {
+  const balance = ERC20.bind(Address.fromString(WETH)).balanceOf(
+    Address.fromString(WONDERLAND_ETH_TREASURY)
+  );
+
+  return toDecimal(balance, getWETHDecimals());
+};
+
+export const getTreasuryWETHValue = (): BigDecimal => {
+  return getTreasuryWETHBalance().times(getWETHPrice());
 };

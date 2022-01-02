@@ -45,3 +45,18 @@ type Univ3MIMWETHMetric @entity {
   WETHValue: BigDecimal!
   totalValue: BigDecimal!
 }
+
+type TokenBalancesMetric @entity {
+  id: ID!
+  timestamp: BigInt!
+  MIMCount: BigDecimal!
+  MIMValue: BigDecimal!
+  CVXCount: BigDecimal!
+  CVXValue: BigDecimal!
+  WBTCCount: BigDecimal!
+  WBTCValue: BigDecimal!
+  CRVCount: BigDecimal!
+  CRVValue: BigDecimal!
+  ETHCount: BigDecimal!
+  ETHValue: BigDecimal!
+}
