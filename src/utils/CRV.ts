@@ -1,7 +1,7 @@
 import { getWETHDecimals, getWETHPrice } from "./WETH";
 import { CRV, UNI_V2_CRV_WETH_PAIR, WONDERLAND_ETH_TREASURY } from "./../constants";
 import { ERC20 } from "./../../generated/Bentobox/ERC20";
-import { Address, BigDecimal } from "@graphprotocol/graph-ts";
+import { Address, BigDecimal, log } from "@graphprotocol/graph-ts";
 import { toDecimal } from "../Decimals";
 import { UniswapV2Pair } from "../../generated/sOHM/UniswapV2Pair";
 
@@ -17,11 +17,11 @@ export const getCRVPrice = (): BigDecimal => {
     return BigDecimal.fromString("0");
   }
 
-  const reserve0 = result.value.value0; // crv
-  const reserve1 = result.value.value1; // weth
+  const reserve0 = result.value.value0; // weth
+  const reserve1 = result.value.value1; // crv
 
-  const totCrv = toDecimal(reserve0, getCRVDecimals());
-  const totWeth = toDecimal(reserve1, getWETHDecimals());
+  const totWeth = toDecimal(reserve0, getWETHDecimals());
+  const totCrv = toDecimal(reserve1, getCRVDecimals());
 
   const usdValueOfWethInPool = totWeth.times(getWETHPrice());
   const crvPrice = usdValueOfWethInPool.div(totCrv);

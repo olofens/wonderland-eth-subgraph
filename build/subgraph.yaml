@@ -17,30 +17,30 @@ dataSources:
         - LogRebase
       abis:
         - name: Bentobox
-          file: sOHM/abis/Bentobox.json
+          file: sOHM\abis\Bentobox.json
         - name: ERC20
-          file: sOHM/abis/ERC20.json
+          file: sOHM\abis\ERC20.json
         - name: Abracvxtricrypto2
-          file: sOHM/abis/Abracvxtricrypto2.json
+          file: sOHM\abis\Abracvxtricrypto2.json
         - name: CurvePoolOracle
-          file: sOHM/abis/CurvePoolOracle.json
+          file: sOHM\abis\CurvePoolOracle.json
         - name: ConvexStakingWrapperAbra
-          file: sOHM/abis/ConvexStakingWrapperAbra.json
+          file: sOHM\abis\ConvexStakingWrapperAbra.json
         - name: USTCauldron
-          file: sOHM/abis/USTCauldron.json
+          file: sOHM\abis\USTCauldron.json
         - name: Degenbox
-          file: sOHM/abis/Degenbox.json
+          file: sOHM\abis\Degenbox.json
         - name: sOHM
-          file: sOHM/abis/sOHM.json
+          file: sOHM\abis\sOHM.json
         - name: PopsicleV3Optimizer
-          file: sOHM/abis/PopsicleV3Optimizer.json
+          file: sOHM\abis\PopsicleV3Optimizer.json
         - name: UniswapV2Pair
-          file: sOHM/abis/UniswapV2Pair.json
+          file: sOHM\abis\UniswapV2Pair.json
         - name: UniswapV3Pool
-          file: sOHM/abis/UniswapV3Pool.json
+          file: sOHM\abis\UniswapV3Pool.json
         - name: Univ3NFTManager
-          file: sOHM/abis/Univ3NFTManager.json
+          file: sOHM\abis\Univ3NFTManager.json
       eventHandlers:
         - event: LogRebase(indexed uint256,uint256,uint256)
           handler: handleLogRebase
-      file: sOHM/sOHM.wasm
+      file: sOHM\sOHM.wasm
